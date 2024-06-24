@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Кликер</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div id="game-container">
+    <div id="bread-info">
+      <div id="bread-counter">Bread: 0</div>
+      <div id="click-income">Доход за клик: 1</div>
+    </div>
+    <img src="button1.png" id="bread-button" alt="Кнопка заработка" onclick="earnBread(event)">
+    <div id="level-progress-container">
+      <div id="level-progress-bar"></div>
+    </div>
+    <div id="level-info">Уровень: 1</div>
+    <img src="convert1.png" id="convert-button" alt="Конвертировать" onclick="window.location.href='convert.html'">
+  </div>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

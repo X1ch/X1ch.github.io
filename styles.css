@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'Fulbo Argenta';
+  src: url('FulboArgenta.ttf') format('truetype');
+}
+
+body, html {
+  background-color: #141221;
+  color: #d4a373;
+  font-family: "Shantell Sans", cursive;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  text-align: center;
+}
+
+#game-container, #conversion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#bread-button {
+  cursor: pointer;
+  position: relative;
+  width: 50%; /* Adjust the size of the button for mobile devices */
+}
+
+#bread-counter, #level-info, #batya-counter, #click-income {
+  margin: 10px;
+  color: white; /* Ensure text is visible on dark background */
+}
+
+#level-progress-container {
+  width: 90%; /* Full width on mobile devices */
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#level-progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: #76b852;
+  transition: width 0.25s;
+}
+
+.click-reward-display {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background-color: #76b852;
+  padding: 2px 5px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  opacity: 0;
+  transition: opacity 0.5s, top 0.5s;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+  #bread-button {
+    width: 70%; /* Larger button for easier clicking on mobile */
+  }
+}
