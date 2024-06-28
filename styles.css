@@ -12,7 +12,7 @@ body, html {
 }
 .header {
   position: relative;
-  top: 100px;
+  top: 50px;
 }
 .header img {
   width: 95%;
