@@ -17,24 +17,23 @@ body, html {
 }
 .header img {
   width: 95%;
-  
-  
 }
 .header-info {
   font-size: 20pt;
   position: absolute;
   top: 45%;
-  right: 0%;
+  right: 20%;
   transform: translate(-50%, -50%);
+  text-align: left;
 }
 .breadButton{
   position: relative;
   font-size: 35pt;
-  top: 100px;
+  top: 60px;
 }
 .clickIncome{
-  position: relative;
-  top: 100px;
+  position: relative; 
+  top: 60px; 
   font-size: 24pt;
 }
 .button {
@@ -47,7 +46,7 @@ body, html {
 }
 .click{
   position: relative;
-  top: 120px;
+  top: 60px;
 }
 #progressBarContainer {
   position: relative;
