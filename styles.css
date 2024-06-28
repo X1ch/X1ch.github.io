@@ -2,10 +2,11 @@ body, html {
   background: linear-gradient(#141221, #524A87);
   color: white;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  height: 100vh;
+  height: auto;
   overflow: hidden;
   margin: 0;
   text-align: center;
+  
 }
 .header {
   position: relative;
