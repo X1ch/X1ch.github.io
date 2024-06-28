@@ -7,7 +7,7 @@ function setTelegramNick() {
   const nickElement = document.getElementById('nick');
   
   // Установка ника пользователя в элемент
-  nickElement.textContent = 'Ник: ' + telegramUser.initDataUnsafe.user.username;
+  nickElement.textContent = telegramUser.initDataUnsafe.user.username;
 }
 
 // Вызов функции при загрузке страницы
