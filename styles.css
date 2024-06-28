@@ -1,69 +1,65 @@
-@font-face {
-  font-family: 'Fulbo Argenta';
-  src: url('FulboArgenta.ttf') format('truetype');
-}
-
 body, html {
-  background-color: #141221;
-  color: #d4a373;
-  font-family: "Shantell Sans", cursive;
+  background: linear-gradient(#141221, #524A87);
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   height: 100vh;
   overflow: hidden;
   margin: 0;
   text-align: center;
 }
-
-#game-container, #conversion-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+.header {
+  position: relative;
 }
-
-#bread-button {
+.header img {
+  width: 95%;
+  
+}
+.header-info {
+  font-size: 20pt;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.breadButton{
+  font-size: 35pt;
+}
+.clickIncome{
+  font-size: 24pt;
+}
+.button {
   cursor: pointer;
   position: relative;
-  width: 50%; /* Adjust the size of the button for mobile devices */
+  width: 50%;
 }
-
-#bread-counter, #level-info, #batya-counter, #click-income {
-  margin: 10px;
-  color: white; /* Ensure text is visible on dark background */
+.button img {
+  width: 100px;
 }
-
-#level-progress-container {
-  width: 90%; /* Full width on mobile devices */
+#progressBarContainer {
+  width: 100%; 
   height: 20px;
   background-color: #ddd;
   border-radius: 10px;
-  overflow: hidden;
+  
 }
-
-#level-progress-bar {
+#progressBar {
   height: 100%;
   width: 0%;
   background-color: #76b852;
   transition: width 0.25s;
 }
-
-.click-reward-display {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  background-color: #76b852;
-  padding: 2px 5px;
-  border-radius: 5px;
-  font-size: 0.8em;
-  opacity: 0;
-  transition: opacity 0.5s, top 0.5s;
+.level-info{
+  font-size: 24pt;
 }
+.footer {
+  position: relative;
+}
+.footer img {
+  width: 95%;
+}
+.menu-icons img {
+  
+  transform: translate(0%, -150%);
+  width: 90px;
 
-/* Responsive design adjustments */
-@media (max-width: 600px) {
-  #bread-button {
-    width: 70%; /* Larger button for easier clicking on mobile */
-  }
 }
