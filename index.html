@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Кликер</title>
-  <link rel="stylesheet" href="styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кликер Хлеба</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="game-container">
-    <div id="bread-info">
-      <div id="bread-counter">Bread: 0</div>
-      <div id="click-income">Доход за клик: 1</div>
-    </div>
-    <img src="button1.png" id="bread-button" alt="Кнопка заработка" onclick="earnBread(event)">
-    <div id="level-progress-container">
-      <div id="level-progress-bar"></div>
-    </div>
-    <div id="level-info">Уровень: 1</div>
-    <img src="convert1.png" id="convert-button" alt="Конвертировать" onclick="window.location.href='convert.html'">
+<div class="header">
+  <img src="head.svg" alt="Заголовок">
+  <div class="header-info">
+    <div id="nick">Ник: User123</div>
+    <div id="income-hour">Доход в час: 0</div>
   </div>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script src="script.js"></script>
+</div>
+<div class="breadButton" id="breadCounter">Bread: 0</div>
+<div class="clickIncome" id="clickIncome">Монет за клик: 1</div>
+<button id="breadButton" onclick="clickBread()">
+  <img src="coinbutton.png" alt="Кнопка заработка хлеба">
+</button>
+<div id="progressBarContainer">
+  <div id="progressBar"></div>
+</div>
+<div class="level-info">Уровень: <span id="levelDisplay">1</span></div>
+<div class="footer">
+  <img src="menu.svg" alt="Меню">
+  <div class="menu-icons">
+    <img src="mine.svg" alt="Майнинг">
+    <img src="shop.svg" alt="Магазин">
+    <img src="quest.svg" alt="Квесты">
+    <img src="mconvert.svg" alt="Конвертация">
+  </div>
+</div>
+<script src="scripts.js"></script>
 </body>
 </html>
