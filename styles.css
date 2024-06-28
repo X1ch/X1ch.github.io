@@ -78,11 +78,21 @@ body, html {
 }
 .mine{
   position: relative;
-  top: 30px;
+  top: 25px;
+  left: 5px;
+}
+.shop{
+  position: relative;
+  top: -5px;
+}
+.quest{
+  position: relative;
+  top: -5px;
 }
 .mconvert{
   position: relative;
-  top: -6px;
+  top: -11px;
+  right: 5px;
 }
 .menu-icons img {
   
