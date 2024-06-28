@@ -1,8 +1,10 @@
+
+
 body, html {
   background: linear-gradient(#141221, #524A87);
   color: white;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  height: auto;
+  height: 100vh;
   overflow: hidden;
   margin: 0;
   text-align: center;
@@ -10,9 +12,11 @@ body, html {
 }
 .header {
   position: relative;
+  top: 100px;
 }
 .header img {
   width: 95%;
+  
   
 }
 .header-info {
@@ -23,9 +27,13 @@ body, html {
   transform: translate(-50%, -50%);
 }
 .breadButton{
+  position: relative;
   font-size: 35pt;
+  top: 100px;
 }
 .clickIncome{
+  position: relative;
+  top: 100px;
   font-size: 24pt;
 }
 .button {
@@ -33,10 +41,16 @@ body, html {
   position: relative;
   width: 50%;
 }
-.button img {
+.button img { 
   width: 100px;
 }
+.click{
+  position: relative;
+  top: 100px;
+}
 #progressBarContainer {
+  position: relative;
+  top: 100px;
   width: 100%; 
   height: 20px;
   background-color: #ddd;
@@ -50,10 +64,14 @@ body, html {
   transition: width 0.25s;
 }
 .level-info{
+  position: relative;
+  top: 100px;
   font-size: 24pt;
 }
 .footer {
   position: relative;
+  top: 100px;
+
 }
 .footer img {
   width: 95%;
