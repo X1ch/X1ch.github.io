@@ -12,7 +12,7 @@ body, html {
 }
 .header {
   position: relative;
-  top: 10px;
+  top: 30px;
   
 }
 .header img {
@@ -24,7 +24,7 @@ body, html {
   font-size: 20pt;
   position: absolute;
   top: 45%;
-  right: 30%;
+  right: 0%;
   transform: translate(-50%, -50%);
 }
 .breadButton{
@@ -47,7 +47,7 @@ body, html {
 }
 .click{
   position: relative;
-  top: 100px;
+  top: 120px;
 }
 #progressBarContainer {
   position: relative;
