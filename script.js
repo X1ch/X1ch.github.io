@@ -1,3 +1,18 @@
+// Подключение к Telegram Web App API
+const telegramUser = window.Telegram.WebApp;
+
+// Функция для установки ника пользователя
+function setTelegramNick() {
+  // Получение элемента по ID
+  const nickElement = document.getElementById('nick');
+  
+  // Установка ника пользователя в элемент
+  nickElement.textContent = 'Ник: ' + telegramUser.initDataUnsafe.user.username;
+}
+
+// Вызов функции при загрузке страницы
+document.addEventListener('DOMContentLoaded', setTelegramNick);
+
 let bread = 0;
 let clickValue = 1;
 let level = 1;
@@ -16,7 +31,7 @@ function checkLevelUp() {
     level++;
     clickValue += 2;
     levelDisplay.textContent = level;
-    document.getElementById('clickIncome').textContent = 'Доход за клик: ' + clickValue;
+    document.getElementById('clickIncome').textContent = 'Монет за клик: ' + clickValue;
     updateProgressBar();
   }
 }
