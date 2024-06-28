@@ -40,13 +40,19 @@ body, html {
   cursor: pointer;
   position: relative;
   width: 50%;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 .button img { 
   width: 100px;
 }
+
 .click{
   position: relative;
   top: 70px;
+}
+.click:active {
+  transform: scale(0.95); /* Уменьшаем кнопку */
+  transition: transform 0.5s, background-color 0.2s;
 }
 #progressBarContainer {
   position: relative;
