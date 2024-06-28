@@ -22,8 +22,8 @@ body, html {
 .header-info {
   font-size: 20pt;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 45%;
+  right: 150px;
   transform: translate(-50%, -50%);
 }
 .breadButton{
