@@ -75,8 +75,10 @@ body, html {
   font-size: 20pt;
 }
 .footer {
-  position: relative;
-  top: 100px;
+  position: fixed; /* Фиксированное позиционирование относительно окна браузера */
+  bottom: -10%; /* Прижимаем изображение к нижней части окна браузера */
+  left: 0; /* Выравниваем изображение по левому краю окна браузера */
+  width: 100%; 
 
 }
 .footer img {
@@ -84,26 +86,51 @@ body, html {
 }
 .mine{
   position: relative;
-  top: 25px;
+  top: 10px;
   left: 5px;
 }
 .shop{
   position: relative;
-  top: -5px;
+  top: 7px;
 }
 .quest{
   position: relative;
-  top: -5px;
+  top: 7px;
   right: 5px;
 }
 .mconvert{
   position: relative;
-  top: -11px;
   right: 10px;
 }
 .menu-icons img {
   position: relative;
   transform: translate(0%, -150%);
   width: 90px;
-
+}
+.context{
+  position: relative; 
+  top: 60px; 
+}
+.contet{
+  position: relative; 
+  top: 60px;
+}
+.convertcoin{
+  position: relative; 
+  top: 80px;
+  right: 40%;
+}
+.convertbut{
+  position: relative; 
+  top: 250px;
+}
+.clickcoin{
+  position: relative; 
+  font-size: 40px;
+  top: 32px;
+  right: 30%;
+}
+.cont{
+  position: relative; 
+  top: 250px;
 }

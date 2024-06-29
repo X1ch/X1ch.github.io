@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Конвертация монет</title>
-  <link rel="stylesheet" href="styles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кликер Хлеба</title>
+<link rel="stylesheet" href="indexstyles.css">
 </head>
 <body>
-  <div id="conversion-container">
-    <div id="batya-counter">Batya: 0</div>
-    <button onclick="convertBread()">Конвертировать Bread в Batya</button>
-    <button onclick="window.location.href='index.html'">Вернуться к игре</button>
+<div class="clickIncome" id="clickIncome">Конвертируйте монеты в токены</div>
+
+<div class="context" id="context">За каждый клик ты получаешь монетку Bread.</div>
+<div class="contet" id="contet">1000 монеток конвертируются в 1 токен $BATYA.</div>
+<img class="convertcoin" id="convertcoin" src="group8.svg" alt="Токен"> 
+<div class="clickcoin" id="clickcoin">0</div>
+<img class="convertbut" id="convertbut" src="convert1.png" alt="Конвертировать">
+<div class="cont" id="cont">Нажмите чтобы конвертировать.</div>
+<div class="footer">
+  <img src="menu.svg" alt="Меню">
+  <div class="menu-icons">
+    <img class="mine" src="mine.svg" id="minebutton" alt="Майнинг" onclick="window.location.href='index.html'">
+    <img class="shop" src="shop.svg" id="shopbutton" alt="Магазин" onclick="window.location.href='shop.html'">
+    <img class="quest" src="quest.svg" id="questbutton"  alt="Квесты" onclick="window.location.href='quest.html'">
+    <img class="mconvert" src="mconvert.svg" id="convert" alt="Конвертация" onclick="window.location.href='convert.html'">
   </div>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script src="convert.js"></script>
+</div>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
