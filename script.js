@@ -40,3 +40,38 @@ function updateProgressBar() {
   let progress = (bread - levelThresholds[level - 1]) / (levelThresholds[level] - levelThresholds[level - 1]) * 100;
   progressBar.style.width = progress + '%';
 }
+
+
+
+
+
+
+
+const googleSheetsApiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/{spreadsheetId}/values/{range}:append';
+const accessToken = '111745891345314506689'; // Замените на ваш access_token
+const spreadsheetId = '1RjxE-TzCStnvucWt8Hy2aUOj22oKjFPC0P5jsgMLMiE'; // Замените на ID вашей таблицы
+const range = 'A1'; // Диапазон ячеек для добавления данных
+
+function appendDataToSheet(data) {
+  fetch(googleSheetsApiUrl.replace('{spreadsheetId}', spreadsheetId).replace('{range}', range), {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      values: [data],
+      majorDimension: 'ROWS'
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Data appended:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
+
+// Пример использования
+appendDataToSheet(['User123', bread, clickValue, level]);
