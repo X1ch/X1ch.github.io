@@ -48,7 +48,7 @@ function updateProgressBar() {
 
 
 const googleSheetsApiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/{spreadsheetId}/values/{range}:append';
-const accessToken = '111745891345314506689'; // Замените на ваш access_token
+const accessToken = '1015207639462'; // Замените на ваш access_token
 const spreadsheetId = '1RjxE-TzCStnvucWt8Hy2aUOj22oKjFPC0P5jsgMLMiE'; // Замените на ID вашей таблицы
 const range = 'A1'; // Диапазон ячеек для добавления данных
 
