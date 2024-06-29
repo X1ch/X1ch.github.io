@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
 let bread = 0;
 let clickValue = 1;
 let level = 1;
+let batyacoin = 0;
 const levelThresholds = [0, 1, 5000, 25000, 100000, 1000000, 2000000, 10000000, 50000000, 1000000000];
 const levelDisplay = document.getElementById('levelDisplay');
 const progressBar = document.getElementById('progressBar');
 const breadCounter = document.getElementById('breadCounter');
 const clickIncome = document.getElementById('clickIncome');
+const clickcoin = document.getElementById('clickcoin');
 
 // Загрузка игры
 function loadGame() {
@@ -33,7 +35,14 @@ function loadGame() {
   clickIncome.textContent = 'Монет за клик: ' + clickValue;
   updateProgressBar();
 }
-
+function convertBreadToTokens() {
+  clickcoin += Math.floor(bread / 1000); // Добавляем токены за каждые 1000 монет
+  bread %= 1000; // Обновляем количество монет, убирая "использованные" для конвертации
+  // Обновление интерфейса
+  document.getElementById('breadCounter').textContent = 'Bread: ' + bread;
+  document.getElementById('clickcoin').textContent = clickcoin;
+  saveGame(); // Сохраняем изменения
+}
 // Сохранение игры
 function saveGame() {
   localStorage.setItem('bread', bread);
@@ -69,11 +78,3 @@ function updateProgressBar() {
 
 // Добавьте обработчик события для сохранения игры перед закрытием страницы
 window.onbeforeunload = saveGame;
-
-// Добавьте функцию для обновления данных при переходе между страницами
-function updateDataOnPageTransition() {
-  window.addEventListener('pagehide', saveGame);
-  window.addEventListener('pageshow', loadGame);
-}
-
-updateDataOnPageTransition(); // Инициализация функции обновления данных
