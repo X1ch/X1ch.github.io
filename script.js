@@ -69,3 +69,11 @@ function updateProgressBar() {
 
 // Добавьте обработчик события для сохранения игры перед закрытием страницы
 window.onbeforeunload = saveGame;
+
+// Добавьте функцию для обновления данных при переходе между страницами
+function updateDataOnPageTransition() {
+  window.addEventListener('pagehide', saveGame);
+  window.addEventListener('pageshow', loadGame);
+}
+
+updateDataOnPageTransition(); // Инициализация функции обновления данных
