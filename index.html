@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Кликер Хлеба</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="indexstyles.css">
 </head>
 <body>
 <div class="header">
   <img src="head.svg" alt="Заголовок">
   <div class="header-info">
-    <div id="nick"></div>
+    <div id="nick">Nick</div>
     <div id="income-hour">Доход в час: 0</div>
   </div>
 </div>
 <div class="breadButton" id="breadCounter">Bread: 0</div>
 <div class="clickIncome" id="clickIncome">Монет за клик: 1</div>
-<img class="click"  src="coinbutton.svg" id="breadButton" alt="Кнопка заработка хлеба" onclick="clickBread()">
+<img class="click"  src="coinbutton.png" id="breadButton" alt="Кнопка заработка хлеба" onclick="clickBread()">
 <div id="progressBarContainer">
   <div id="progressBar"></div>
 </div>
@@ -26,7 +26,7 @@
   <div class="menu-icons">
     <img class="mine" src="mine.svg" alt="Майнинг">
     <img class="shop" src="shop.svg" alt="Магазин">
-    <img class="quest" src="quest.svg" alt="Квесты">
+    <img class="quest" src="quest.svg" id="questbutton"  alt="Квесты" onclick="window.location.href='quest.html'">
     <img class="mconvert" src="mconvert.svg" alt="Конвертация">
   </div>
 </div>

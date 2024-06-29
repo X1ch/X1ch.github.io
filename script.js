@@ -1,17 +1,12 @@
 // Подключение к Telegram Web App API
 const telegramUser = window.Telegram.WebApp;
-
-// Функция для установки ника пользователя
 function setTelegramNick() {
-  // Получение элемента по ID
   const nickElement = document.getElementById('nick');
-  
-  // Установка ника пользователя в элемент
   nickElement.textContent = telegramUser.initDataUnsafe.user.username;
 }
-
-// Вызов функции при загрузке страницы
 document.addEventListener('DOMContentLoaded', setTelegramNick);
+
+
 
 let bread = 0;
 let clickValue = 1;
@@ -50,7 +45,7 @@ function updateProgressBar() {
 // Замените 'ACCESS_TOKEN' и 'FILE_PATH' на ваши данные
 const yandexDiskApiUrl = 'https://cloud-api.yandex.net/v1/disk/resources/upload';
 const accessToken = 'y0_AgAAAABjbR8fAAwGDAAAAAEI212pAADoMAuef5dEIpvPIVEhdxoUSfJQMw';
-const filePath = 'edit/disk/disk%2FBreadFather.xlsx?source=docs&sk=y3b0a813ef047ed397a7563a90e64';
+const filePath = 'disk%2FBreadFather.xlsx';
 
 function uploadDataToYandexDisk(data) {
   // Получение ссылки для загрузки файла
