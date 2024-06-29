@@ -1,76 +1,71 @@
-// Подключение к Telegram Web App API
+// Подключение к Telegram Web App API для вывода логина пользователя
 const telegramUser = window.Telegram.WebApp;
 function setTelegramNick() {
   const nickElement = document.getElementById('nick');
   nickElement.textContent = telegramUser.initDataUnsafe.user.username;
 }
-document.addEventListener('DOMContentLoaded', setTelegramNick);
+document.addEventListener('DOMContentLoaded', () => {
+  setTelegramNick();
+  loadGame(); // Загрузка сохраненного прогресса при загрузке страницы
+});
 
-
-
+// Переменные
 let bread = 0;
 let clickValue = 1;
 let level = 1;
 const levelThresholds = [0, 1, 5000, 25000, 100000, 1000000, 2000000, 10000000, 50000000, 1000000000];
 const levelDisplay = document.getElementById('levelDisplay');
 const progressBar = document.getElementById('progressBar');
+const breadCounter = document.getElementById('breadCounter');
+const clickIncome = document.getElementById('clickIncome');
 
+// Загрузка игры
+function loadGame() {
+  // Проверка наличия сохраненных данных
+  if (localStorage.getItem('bread')) {
+    bread = parseInt(localStorage.getItem('bread'), 10);
+    clickValue = parseInt(localStorage.getItem('clickValue'), 10);
+    level = parseInt(localStorage.getItem('level'), 10);
+  }
+  // Обновление интерфейса
+  breadCounter.textContent = 'Bread: ' + bread;
+  levelDisplay.textContent = level;
+  clickIncome.textContent = 'Монет за клик: ' + clickValue;
+  updateProgressBar();
+}
+
+// Сохранение игры
+function saveGame() {
+  localStorage.setItem('bread', bread);
+  localStorage.setItem('clickValue', clickValue);
+  localStorage.setItem('level', level);
+}
+
+// Начисление монет за клик
 function clickBread() {
   bread += clickValue;
-  document.getElementById('breadCounter').textContent = 'Bread: ' + bread;
+  breadCounter.textContent = 'Bread: ' + bread;
+  saveGame(); // Сохранение прогресса после каждого клика
   checkLevelUp();
 }
 
+// Проверка повышения уровня
 function checkLevelUp() {
-  if (bread >= levelThresholds[level]) {
+  while (bread >= levelThresholds[level]) {
     level++;
     clickValue += 2;
     levelDisplay.textContent = level;
-    document.getElementById('clickIncome').textContent = 'Монет за клик: ' + clickValue;
+    clickIncome.textContent = 'Монет за клик: ' + clickValue;
     updateProgressBar();
+    saveGame(); // Сохранение прогресса при повышении уровня
   }
 }
 
+// Обновление прогрессбара
 function updateProgressBar() {
   let progress = (bread - levelThresholds[level - 1]) / (levelThresholds[level] - levelThresholds[level - 1]) * 100;
   progressBar.style.width = progress + '%';
 }
 
-
-
-
-
-
-
-// Замените 'ACCESS_TOKEN' и 'FILE_PATH' на ваши данные
-const yandexDiskApiUrl = 'https://cloud-api.yandex.net/v1/disk/resources/upload';
-const accessToken = 'y0_AgAAAABjbR8fAAwGDAAAAAEI212pAADoMAuef5dEIpvPIVEhdxoUSfJQMw';
-const filePath = 'disk%2FBreadFather.xlsx';
-
-function uploadDataToYandexDisk(data) {
-  // Получение ссылки для загрузки файла
-  fetch(yandexDiskApiUrl + '?path=' + encodeURIComponent(filePath), {
-    method: 'GET',
-    headers: {
-      'Authorization': `OAuth ${accessToken}`
-    }
-  })
-  .then(response => response.json())
-  .then(uploadUrl => {
-    // Загрузка данных на Yandex Disk
-    fetch(uploadUrl.href, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-      },
-      body: data // Данные в формате Blob или ArrayBuffer
-    })
-    .then(response => {
-      if (response.status === 201) {
-        console.log('Data uploaded successfully');
-      }
-    })
-    .catch(error => console.error('Upload failed:', error));
-  })
-  .catch(error => console.error('Error getting upload link:', error));
-}
+// Добавьте обработчик события для сохранения игры перед закрытием страницы
+window.onbeforeunload = saveGame;
