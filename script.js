@@ -47,31 +47,35 @@ function updateProgressBar() {
 
 
 
-const googleSheetsApiUrl = 'https://sheets.googleapis.com/v4/spreadsheets/{spreadsheetId}/values/{range}:append';
-const accessToken = '1015207639462'; // Замените на ваш access_token
-const spreadsheetId = '1RjxE-TzCStnvucWt8Hy2aUOj22oKjFPC0P5jsgMLMiE'; // Замените на ID вашей таблицы
-const range = 'A1'; // Диапазон ячеек для добавления данных
+// Замените 'ACCESS_TOKEN' и 'FILE_PATH' на ваши данные
+const yandexDiskApiUrl = 'https://cloud-api.yandex.net/v1/disk/resources/upload';
+const accessToken = 'y0_AgAAAABjbR8fAAwGDAAAAAEI212pAADoMAuef5dEIpvPIVEhdxoUSfJQMw';
+const filePath = 'disk%2FBreadFather.xlsx';
 
-function appendDataToSheet(data) {
-  fetch(googleSheetsApiUrl.replace('{spreadsheetId}', spreadsheetId).replace('{range}', range), {
-    method: 'POST',
+function uploadDataToYandexDisk(data) {
+  // Получение ссылки для загрузки файла
+  fetch(yandexDiskApiUrl + '?path=' + encodeURIComponent(filePath), {
+    method: 'GET',
     headers: {
-      'Authorization': `Bearer ${accessToken}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      values: [data],
-      majorDimension: 'ROWS'
-    })
+      'Authorization': `OAuth ${accessToken}`
+    }
   })
   .then(response => response.json())
-  .then(data => {
-    console.log('Data appended:', data);
+  .then(uploadUrl => {
+    // Загрузка данных на Yandex Disk
+    fetch(uploadUrl.href, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      },
+      body: data // Данные в формате Blob или ArrayBuffer
+    })
+    .then(response => {
+      if (response.status === 201) {
+        console.log('Data uploaded successfully');
+      }
+    })
+    .catch(error => console.error('Upload failed:', error));
   })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
+  .catch(error => console.error('Error getting upload link:', error));
 }
-
-// Пример использования
-appendDataToSheet(['User123', bread, clickValue, level]);
