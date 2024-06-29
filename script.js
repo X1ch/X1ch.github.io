@@ -50,7 +50,7 @@ function updateProgressBar() {
 // Замените 'ACCESS_TOKEN' и 'FILE_PATH' на ваши данные
 const yandexDiskApiUrl = 'https://cloud-api.yandex.net/v1/disk/resources/upload';
 const accessToken = 'y0_AgAAAABjbR8fAAwGDAAAAAEI212pAADoMAuef5dEIpvPIVEhdxoUSfJQMw';
-const filePath = 'disk%2FBreadFather.xlsx';
+const filePath = 'edit/disk/disk%2FBreadFather.xlsx?source=docs&sk=y3b0a813ef047ed397a7563a90e64';
 
 function uploadDataToYandexDisk(data) {
   // Получение ссылки для загрузки файла
