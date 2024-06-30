@@ -4,10 +4,6 @@ function setTelegramNick() {
   const nickElement = document.getElementById('nick');
   nickElement.textContent = telegramUser.initDataUnsafe.user.username;
 }
-document.addEventListener('DOMContentLoaded', () => {
-  setTelegramNick();
-  loadGame(); // Загрузка сохраненного прогресса при загрузке страницы
-});
 
 // Переменные
 let bread = 0;
@@ -21,40 +17,18 @@ const breadCounter = document.getElementById('breadCounter');
 const clickIncome = document.getElementById('clickIncome');
 const clickcoin = document.getElementById('clickcoin');
 
-// Загрузка игры
-function loadGame() {
-  // Проверка наличия сохраненных данных
-  if (localStorage.getItem('bread')) {
-    bread = parseInt(localStorage.getItem('bread'), 10);
-    clickValue = parseInt(localStorage.getItem('clickValue'), 10);
-    level = parseInt(localStorage.getItem('level'), 10);
-  }
-  // Обновление интерфейса
-  breadCounter.textContent = 'Bread: ' + bread;
-  levelDisplay.textContent = level;
-  clickIncome.textContent = 'Монет за клик: ' + clickValue;
-  updateProgressBar();
-}
+
 function convertBreadToTokens() {
   clickcoin += Math.floor(bread / 1000); // Добавляем токены за каждые 1000 монет
   bread %= 1000; // Обновляем количество монет, убирая "использованные" для конвертации
   // Обновление интерфейса
   document.getElementById('breadCounter').textContent = 'Bread: ' + bread;
   document.getElementById('clickcoin').textContent = clickcoin;
-  saveGame(); // Сохраняем изменения
 }
-// Сохранение игры
-function saveGame() {
-  localStorage.setItem('bread', bread);
-  localStorage.setItem('clickValue', clickValue);
-  localStorage.setItem('level', level);
-}
-
 // Начисление монет за клик
 function clickBread() {
   bread += clickValue;
   breadCounter.textContent = 'Bread: ' + bread;
-  saveGame(); // Сохранение прогресса после каждого клика
   checkLevelUp();
 }
 
@@ -66,7 +40,6 @@ function checkLevelUp() {
     levelDisplay.textContent = level;
     clickIncome.textContent = 'Монет за клик: ' + clickValue;
     updateProgressBar();
-    saveGame(); // Сохранение прогресса при повышении уровня
   }
 }
 
@@ -76,5 +49,59 @@ function updateProgressBar() {
   progressBar.style.width = progress + '%';
 }
 
-// Добавьте обработчик события для сохранения игры перед закрытием страницы
-window.onbeforeunload = saveGame;
+function saveGame() {
+  // Сохраняем локально
+  localStorage.setItem('bread', bread);
+  localStorage.setItem('clickValue', clickValue);
+  localStorage.setItem('level', level);
+
+  // Отправляем данные на сервер для сохранения в SQLite
+  fetch('/save', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      nick: telegramUser.initDataUnsafe.user.username, // Используем логин пользователя из Telegram
+      bread: bread,
+      clickcoin: clickcoin,
+      lvl: level
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Сохранение успешно:', data);
+  })
+  .catch((error) => {
+    console.error('Ошибка при сохранении:', error);
+  });
+}
+
+// Загрузка игры
+function loadGame() {
+  // Загружаем локально сохраненные данные, если они есть
+  if (localStorage.getItem('bread')) {
+    bread = parseInt(localStorage.getItem('bread'), 10);
+    clickValue = parseInt(localStorage.getItem('clickValue'), 10);
+    level = parseInt(localStorage.getItem('level'), 10);
+  }
+
+  // Запрашиваем данные с сервера
+  fetch(`/load/${telegramUser.initDataUnsafe.user.username}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data) {
+        bread = data.bread;
+        clickcoin = data.clickcoin;
+        level = data.lvl;
+        // Обновляем интерфейс с загруженными данными
+        breadCounter.textContent = 'Bread: ' + bread;
+        levelDisplay.textContent = level;
+        clickIncome.textContent = 'Монет за клик: ' + clickValue;
+        updateProgressBar();
+      }
+    })
+    .catch((error) => {
+      console.error('Ошибка при загрузке данных:', error);
+    });
+}
