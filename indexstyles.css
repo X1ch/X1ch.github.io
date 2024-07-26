@@ -95,7 +95,6 @@ body, html {
 }
 .quest{
   position: relative;
-  top: 7px;
   right: 5px;
 }
 .mconvert{
@@ -136,5 +135,10 @@ body, html {
 }
 .quest{
   position: relative; 
-  top: 50px;
+  top: 70px;
+}
+.check1{
+  position: relative;
+  height: 30px;
+  left: 70px;
 }
