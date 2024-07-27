@@ -139,16 +139,16 @@ body, html {
 }
 .check1{
   position: relative;
-  height: 60px;
+  top: -60px;
   left: 70px;
 }
 .check2{
   position: relative;
-  height: 60px;
+  top: -60px;
   left: 70px;
 }
 .check3{
   position: relative;
-  height: 60px;
+  top: -60px;
   left: 70px;
 }
